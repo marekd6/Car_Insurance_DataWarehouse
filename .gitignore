@@ -1,1 +1,5 @@
-.csv
+*.csv
+*.docx
+*.zip
+*.vs
+.vs
