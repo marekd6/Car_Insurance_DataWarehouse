@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# SQL Server Management Studio Solution File, Format Version 19.00
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "Car_Insurance_DW", "Car_Insurance_DW.ssmssqlproj", "{874B7066-2B11-40DE-9A8A-BCE41C10CAD2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Default = Default|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{874B7066-2B11-40DE-9A8A-BCE41C10CAD2}.Default|Default.ActiveCfg = Default
+		{BE151D10-2F0A-42D5-9E4D-374F45C153B1}.Default|Default.ActiveCfg = Default
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {784049FA-0669-4402-98FA-85B154F30DFC}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Car_Insurance_DW">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="MAREK-HP\DW:MAREK-HP\laptop">
+          <Created>2023-04-28T20:41:57.7765891+02:00</Created>
+          <Type>SQL</Type>
+          <Server>MAREK-HP\DW</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB>master</InitialDB>
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="Client_insert.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MAREK-HP\DW:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MAREK-HP\DW</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Client_insert.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Client_update.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MAREK-HP\DW:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MAREK-HP\DW</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Client_update.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MAREK-HP\DW:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MAREK-HP\DW</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>create.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ETL_load_assessors.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MAREK-HP\DW:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MAREK-HP\DW</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ETL_load_assessors.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ETL_load_cars.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MAREK-HP\DW:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MAREK-HP\DW</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ETL_load_cars.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ETL_load_client_SCD2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MAREK-HP\DW:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MAREK-HP\DW</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ETL_load_client_SCD2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ETL_load_date.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MAREK-HP\DW:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MAREK-HP\DW</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ETL_load_date.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ETL_load_unknown.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MAREK-HP\DW:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MAREK-HP\DW</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ETL_load_unknown.sql</FullPath>
+        </FileNode>
+        <FileNode Name="loading.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MAREK-HP\DW:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MAREK-HP\DW</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>loading.sql</FullPath>
+        </FileNode>
+        <FileNode Name="relational_warehouse_04_20.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:MAREK-HP\DW:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>MAREK-HP\DW</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>relational_warehouse_04_20.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

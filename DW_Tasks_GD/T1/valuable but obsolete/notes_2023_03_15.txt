@@ -1,0 +1,29 @@
+== Dodatkowa tabela (Car_types).
+== Atrybuty:
+== - id
+== - size
+== - class
+== - production year (te trzy przeniesione z tabeli Cars)
+
+Połączone 1:many z Cars i Parts
+
+== Z Parts znikają size, class, production year, a zamiast tego jest ID_Car_type jako FK i część PK, pozostła cześć to rodzaj cześci (np. engine).
+
+Zmodyfikować tabelkę z bazą (to co wyżej i usunąć żółte lub dokończyć).
+
+== Skopiować opisy z pierwszego pliku.
+
+== damages after car accidents -> car damages
+
+== Usunąć car_value w Insurances.
+
+Zmainy popołudniowe:
+== -- ProcessSpec: Contracts last one year (bez usually)
+Req:
+== ++ metryki 0,5% (wg. wzoru JBook)
+== -- age of the youngest driver
+== -- insurance/car value
+== ** left/right mirror DB
+== ** Claim ID w CSV
+== -- bez accident w CSV
+== ** sekcja 4, zmiana tabel na Car_Types

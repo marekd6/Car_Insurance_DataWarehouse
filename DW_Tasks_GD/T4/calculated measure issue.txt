@@ -1,0 +1,4 @@
+(SUM( [Measures].[Engine Cost] ) / SUM( [Measures].[Value of claim] )) / COUNT( 1 ) not OK
+( [Measures].[Engine Cost]  /  [Measures].[Value of claim] ) / COUNT( 1 ) not OK
+( [Measures].[Engine Cost]  /  [Measures].[Value of claim] ) / [Measures].[Number of claim facts] OK
+(SUM( [Measures].[Engine Cost] ) / SUM( [Measures].[Value of claim] )) / [Measures].[Number of claim facts] OK

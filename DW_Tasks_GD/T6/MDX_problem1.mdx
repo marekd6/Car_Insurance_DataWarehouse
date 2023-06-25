@@ -1,0 +1,129 @@
+-- QUESTION 1.1
+-- Compare the number/amount of claims of different vehicle classes (cheap, medium, premium)
+-- in the analysed month relative to previous months.
+--
+-- MEASURES:
+-- 1. Value of claim
+-- 2. Number of claim facts
+--
+-- DIMENSIONS:
+-- 1. Car (dimension attribute: Class)
+-- 2. Submission date (dimension attribute: Submission month)
+
+WITH
+	MEMBER [Measures].[Value diff]
+	AS
+		'([ID Submission Date].[Month].CurrentMember, [Measures].[Value of claim]) -
+		 ([ID Submission Date].[Month].PrevMember, [Measures].[Value of claim])'
+	MEMBER [Measures].[Number diff]
+	AS
+		'([ID Submission Date].[Month].CurrentMember, [Measures].[Number of claim facts]) -
+		 ([ID Submission Date].[Month].PrevMember, [Measures].[Number of claim facts])'
+SELECT 
+	{ [Measures].[Value of claim],
+	  [Measures].[Value diff],
+	  [Measures].[Number of claim facts],
+	  [Measures].[Number diff]} ON COLUMNS,
+	{ NonEmptyCrossJoin ([DT Car].[Size].[Size].Members,
+				 [ID Submission Date].[Year].[Year].Members,
+				 [ID Submission Date].[Month].[Month].Members) } ON ROWS
+FROM [Car Insurance];
+
+-- QUESTION 1.2
+-- Compare the number/amount of claims of different vehicle colours
+-- in the analysed month relative to previous months.
+--
+-- MEASURES:
+-- 1. Value of claim
+-- 2. Number of claim facts
+--
+-- DIMENSIONS:
+-- 1. Car (dimension attribute: Colour)
+-- 2. Submission date (dimension attribute: Submission month)
+
+WITH
+	MEMBER [Measures].[Value diff]
+	AS
+		'([ID Submission Date].[Month].CurrentMember, [Measures].[Value of claim]) -
+		 ([ID Submission Date].[Month].PrevMember, [Measures].[Value of claim])'
+	MEMBER [Measures].[Number diff]
+	AS
+		'([ID Submission Date].[Month].CurrentMember, [Measures].[Number of claim facts]) -
+		 ([ID Submission Date].[Month].PrevMember, [Measures].[Number of claim facts])'
+SELECT 
+	{ [Measures].[Value of claim],
+	  [Measures].[Value diff],
+	  [Measures].[Number of claim facts],
+	  [Measures].[Number diff]} ON COLUMNS,
+	{ NonEmptyCrossJoin ([DT Car].[Colour].[Colour].Members,
+				 [ID Submission Date].[Year].[Year].Members,
+				 [ID Submission Date].[Month].[Month].Members) } ON ROWS
+FROM [Car Insurance];
+
+-- QUESTION 1.3
+-- Compare the number/amount of claims with respect to the number of damaged parts
+-- in the analysed month relative to previous months.
+--
+-- MEASURES:
+-- 1. Value of claim
+-- 2. Number of claim facts
+--
+-- DIMENSIONS:
+-- 1. Degenerate dimension: Number of damaged parts
+-- 2. Assessment date (dimension attribute: Assessment month)
+
+WITH
+	MEMBER [Measures].[Value diff]
+	AS
+		'([ID Assessment Date].[Month].CurrentMember, [Measures].[Value of claim]) -
+		 ([ID Assessment Date].[Month].PrevMember, [Measures].[Value of claim])'
+	MEMBER [Measures].[Number diff]
+	AS
+		'([ID Assessment Date].[Month].CurrentMember, [Measures].[Number of claim facts]) -
+		 ([ID Assessment Date].[Month].PrevMember, [Measures].[Number of claim facts])'
+SELECT 
+	{ [Measures].[Value of claim],
+	  [Measures].[Value diff],
+	  [Measures].[Number of claim facts],
+	  [Measures].[Number diff]} ON COLUMNS,
+	{ NonEmptyCrossJoin ([FT Claim].[Number Of Damaged Parts].[Number Of Damaged Parts].Members,
+				 [ID Assessment Date].[Year].[Year].Members,
+				 [ID Assessment Date].[Month].[Month].Members) } ON ROWS
+FROM [Car Insurance];
+
+-- QUESTION 1.4
+-- How do cars of different sizes differ in terms of percentage of indemnity related to engine?
+--
+-- MEASURES:
+-- 1. Percentage of indemnity related to Engine cost
+--
+-- DIMENSIONS:
+-- 1. Car (dimension attribute: Size)
+
+SELECT
+	{ [Measures].[Percentage of indemnity related to Engine cost] } ON COLUMNS,
+	{ ([DT Car].[Size].[Size].Members ) } ON ROWS
+FROM [Car Insurance];
+
+-- QUESTION 1.5
+-- Does the indemnity differ for cars evaluated by assessors
+-- with different specialisations (“cargo”, “premium”, “casual”)?
+--
+-- MEASURES:
+-- 1. Value of claim
+--
+-- DIMENSIONS:
+-- 1. Assessor (dimension attribute: Specialisation)
+
+SELECT
+	{ [Measures].[Value of claim] } ON COLUMNS,
+	{ ([DT Assessor].[Specialisation].[Specialisation].Members ) } ON ROWS
+FROM [Car Insurance];
+
+
+-- Limited to year 2017
+SELECT
+	{ [Measures].[Value of claim] } ON COLUMNS,
+	{ ([DT Assessor].[Specialisation].[Specialisation].Members ) } ON ROWS
+FROM [Car Insurance]
+WHERE [ID Submission Date].[Year].&[2017];

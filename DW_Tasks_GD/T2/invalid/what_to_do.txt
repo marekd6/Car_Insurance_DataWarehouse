@@ -1,0 +1,9 @@
+== SQL schema, CSV headers to send
+1 mln entries for the process
+a few thousand for the rest
+T2 = T1 + a few UPDATEs
+== prepare SELECT script to view the DB
+lecture 2 for T3 intro
+
+== PESEL - napis
+== PESEL check

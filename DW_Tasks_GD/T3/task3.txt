@@ -1,0 +1,18 @@
+to do: 
+== DB (star, snowflake or constellation)
+== dimensional model: granularity, measures (value+agg fun)
+== feasibility - use only the measures that are defined in dim model
+== data - is data from sources matching db
+
+== one calculated measure
+== >=3 measures
+== date dimension
+== a few dimensions
+== >=1 fact table
+== star, snowflake or constellation
+== verbose dimension attributes
+== careful with attribute types
+== if data necessary for warehouse is in sources
+== >=1 SCD, generate data for it (Car - colour, Client - exp, age, voi)
+== >=1 hierarchical dimension
+== all queries feasible

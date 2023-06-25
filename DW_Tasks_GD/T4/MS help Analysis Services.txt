@@ -1,0 +1,1 @@
+https://learn.microsoft.com/en-us/analysis-services/multidimensional-models/create-calculated-members?view=asallproducts-allversions

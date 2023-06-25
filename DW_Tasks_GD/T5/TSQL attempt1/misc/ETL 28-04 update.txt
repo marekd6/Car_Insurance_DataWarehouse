@@ -1,0 +1,20 @@
+ETL
+sources -> star -> multi-dim
+3 weeks
+subtask 1:
+- initial data load: date, time, junk dims
+- loading UNKNOWN for every dim (FT ref integrity; simple insert, ID=-1)
+subtask 2:
+- loading every dim (also SCD2)
+subtask 3:
+- loading facts, group everything in SSIS - cube processing
+VS (EN overview + example) equivalent to T-SQL (T-SQL ETL Bookstore example; so many scripts, VS still at the end)
+
+subtask1 passed!
+SCD2 - decydujemy, na zmianych których atrybutów ma być czułe (Age, Exp, Voi)
+głównym (i pewnie jedynym) błędem był generator T2 - pominąłem usunięcie zduplikowanych PESELi
+zmiany: 
+	T2 (generator, schemat, CSVs)
+	T5 (SCD2, insert i update do SureSale dla sprawdzenia ETLa, projekt do zbudowania wszystkiego od początku)
+z propozycji AN następne zajęcia online
+ale z niezadowoleniem przyjęła Twoje nieobecności

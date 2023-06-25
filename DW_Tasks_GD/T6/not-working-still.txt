@@ -1,0 +1,20 @@
+--or rather; numerical operations, dim hierarchy operation
+WITH
+	MEMBER [DT Car].[min]
+		AS MIN([DT Car].[Class].Members, [Measures].[Value of claim])
+		, FORMAT_STRING='CURRENCY'
+	MEMBER [DT Car].[max]
+		AS MAX([DT Car].[Class].Members, [Measures].[Value of claim])
+		, FORMAT_STRING='CURRENCY'
+	MEMBER [DT Car].[avg]
+		AS 'AVG([DT Car].[Class].Members, [Measures].[Value of claim])'
+		, FORMAT_STRING='CURRENCY'
+SELECT
+	{ [Measures].[Value of claim] } ON COLUMNS,
+	{ [Measures].[min], [Measures].[max], [Measures].[avg] } ON ROWS
+//	{ ( [DT Car].[Class].[Class].Members,
+//		[DT Car].[Car type Hierarchy].[Size] ) } ON ROWS
+FROM [Car Insurance] 
+;
+
+//[DT Car].[Car type Hierarchy].[Class]

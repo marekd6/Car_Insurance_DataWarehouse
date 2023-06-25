@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="MAREK-HP_DW.Car_Insurance"
+  DTS:DTSID="{D47C02F8-5EAF-4A4D-9791-47C637102706}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=MAREK-HP\DW;Initial Catalog=Car_Insurance;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Car_Insurance_ETL-{D47C02F8-5EAF-4A4D-9791-47C637102706}MAREK-HP\DW.Car_Insurance;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -1,0 +1,141 @@
+--2.1 Are less experienced drivers responsible for more claims?
+--Measure: Number of claim facts
+--Dimension: Client (dimension attribute: Driving experience)
+SELECT
+	{ [Measures].[Number of claim facts] } ON COLUMNS,
+	{ ORDER([DT Client].[Driving Experience].[Driving Experience].Members,
+	[Measures].[Number of claim facts], DESC) } ON ROWS
+FROM [Car Insurance]
+;
+
+--2.2 Are there differences in number and value of claims between men and women from the
+--same age/experience groups?
+--Measure: Value of claim
+--Measure: Number of claim facts
+--Dimension: Client (dimension attributes: Sex, Driving experience, Age)
+WITH
+	MEMBER [Measures].[NB male-female] AS '([DT Client].[Sex].CURRENTMEMBER, [Measures].[Number of claim facts]) 
+									- ([DT Client].[Sex].FIRSTSIBLING, [Measures].[Number of claim facts])',
+									FORMAT_STRING='#,#.###;'
+	MEMBER [Measures].[AVG indemnity] AS '[Measures].[Value of claim] / [Measures].[Number of claim facts]'
+									,FORMAT_STRING='#.#,0 PLN'
+	MEMBER [Measures].[Val male-female] AS '([DT Client].[Sex].CURRENTMEMBER, [Measures].[Value of claim]) 
+									- ([DT Client].[Sex].FIRSTSIBLING, [Measures].[Value of claim])',
+									FORMAT_STRING='#,#.###;'
+SELECT
+	{ [Measures].[Value of claim], [Measures].[Number of claim facts],
+	[Measures].[NB male-female], [Measures].[Val male-female],
+	[Measures].[AVG indemnity] } ON COLUMNS,
+	{ CrossJoin([DT Client].[Age].[Age].Members,
+		[DT Client].[Driving Experience].[Driving Experience].Members,
+		[DT Client].[Sex].[Sex].Members) } ON ROWS
+FROM [Car Insurance]
+;
+
+--2.3 Compare the number of claims in different voivodeships in the analysed month 
+--relative to previous months.
+--Measure: Number of claim facts
+--Dimension: Client (dimension attribute: Voivodeship)
+--Dimension: Submission date (dimension attribute: Submission month)
+WITH
+	MEMBER [Measures].[Value diff]
+	AS
+		'([ID Submission Date].[Month].CurrentMember, [Measures].[Value of claim]) -
+		 ([ID Submission Date].[Month].PrevMember, [Measures].[Value of claim])'
+	MEMBER [Measures].[Number diff]
+	AS
+		'([ID Submission Date].[Month].CurrentMember, [Measures].[Number of claim facts]) -
+		 ([ID Submission Date].[Month].PrevMember, [Measures].[Number of claim facts])'
+SELECT 
+	{ [Measures].[Value of claim],
+	  [Measures].[Value diff],
+	  [Measures].[Number of claim facts],
+	  [Measures].[Number diff]} ON COLUMNS,
+	{ CrossJoin ([DT Client].[Voivodeship].Members,
+				 [ID Submission Date].[Year].[Year].Members,
+				 [ID Submission Date].[Month].[Month].Members) } ON ROWS
+FROM [Car Insurance];
+
+--2.4 How do women and men differ in terms of percentage of indemnity related to engine?
+--Measure: Percentage of indemnity related to Engine cost
+--Dimension: Client (dimension attribute: Sex)
+WITH 
+	MEMBER [Measures].[ratio female/male] AS ([DT Client].[Sex].&[female],
+						[Measures].[Percentage of indemnity related to Engine cost]) / 
+						([DT Client].[Sex].&[male], 
+						[Measures].[Percentage of indemnity related to Engine cost])
+						, FORMAT_STRING='#%;'
+SELECT
+	{ [Measures].[Percentage of indemnity related to Engine cost],
+	[Measures].[ratio female/male] } ON COLUMNS,
+	{ [DT Client].[Sex].[Sex].Members } ON ROWS
+FROM [Car Insurance]
+;
+
+--2.5 Which age groups are responsible for most and least expensive claims?
+--Measure: Value of claim
+--Dimension: Client (dimension attribute: Age)
+WITH
+	MEMBER [Measures].[AVG indemnity] AS '[Measures].[Value of claim] / [Measures].[Number of claim facts]'
+		, FORMAT_STRING='#.#,0 PLN'
+SELECT
+	{ [Measures].[Value of claim], [Measures].[Number of claim facts], 
+		[Measures].[AVG indemnity] } ON COLUMNS,
+	{ TopCount([DT Client].[Age].[Age].Members, 1, [Measures].[AVG indemnity]),
+		--BottomCount([DT Client].[Age].[Age].Members, 1, [Measures].[AVG indemnity]),
+		BottomCount(EXCEPT( [DT Client].[Age].Members, [DT Client].[Age].&[Unknown] ), 
+			1, [Measures].[AVG indemnity]) } ON ROWS
+FROM [Car Insurance]
+;
+
+--all
+SELECT
+	{ [Measures].[Value of claim] } ON COLUMNS,
+	{ [DT Client].[Age].[Age].Members } on rows
+FROM [Car Insurance]
+;
+
+--erroneous
+WITH
+	MEMBER [DT Client].[Age Max Claim] AS 'MAX([DT Client].[Age].[Age].Members, 
+										[Measures].[Value of claim])'
+SELECT
+	{ [Measures].[Value of claim] } ON COLUMNS,
+	{ [DT Client].[Age Max Claim] } ON ROWS
+FROM [Car Insurance]
+;
+
+--illogical
+WITH 
+	MEMBER [Measures].[Max Indemnity] AS MAX([DT Client].[Age], [Measures].[Value of claim]),
+		FORMAT_STRING='#.#,0 PLN'
+	MEMBER [Measures].[Min Indemnity] AS MIN([DT Client].[Age], [Measures].[Value of claim]),
+		FORMAT_STRING='#.#,0 PLN'
+SELECT
+	{ [Measures].[Max Indemnity], [Measures].[Min Indemnity] } ON COLUMNS, 
+	{ ([DT Client].[Age].Members) } ON ROWS 
+FROM [Car Insurance] 
+;
+
+
+--set+numeric, but erroneous
+WITH 
+	 MEMBER [Measures].[avg a] AS
+		'AVG(DESCENDANTS( [DT Car].[Car type Hierarchy].[Class].[cheap], 
+		[DT Car].[Car type Hierarchy].[Size] ), [Measures].[Value of claim]'
+SELECT
+	{ [Measures].[avg a] } ON COLUMNS, 
+	{ [ID Submission Date].[Year] } ON ROWS 
+FROM [Car Insurance] 
+;
+
+WITH 
+	 MEMBER [Measures].[avg a] AS
+		'AVG(DESCENDANTS( [DT Car].[Car type Hierarchy].[Class].[cheap], 
+		[DT Car].[Car type Hierarchy].[Size] ), [Measures].[Value of claim]'
+SELECT
+	{ DESCENDANTS( [DT Car].[Car type Hierarchy].[Class].[cheap], 
+		[DT Car].[Car type Hierarchy].[Size] ) } ON AXIS(1),
+	{ [Measures].[Number of claim facts] } ON AXIS(0)
+FROM [Car Insurance] 
+;

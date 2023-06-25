@@ -1,0 +1,6 @@
+use SureSale
+GO
+
+INSERT INTO Clients
+VALUES
+(100000, '12345678900', 'FSFGS', 'SVS', 'SFS', 'M', GETDATE(), 'Pomorskie', 'f', 'ss', '1234567890123456789012345678', GETDATE())

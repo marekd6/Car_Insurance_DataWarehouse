@@ -1,0 +1,21 @@
+VIN 17 dowolnych znaków
+w jednym generatorze Cars (produkcja), Insurances (sale) i Claims (claim)
+Clients(urodzenie, license)
+
+urodzenie < license < sale < claim < evaluation
+produkcja < sale
+ergo: urodzenie < sale
+
+propozycja/wdrożone
+urodzenie: 33-80
+license: 51-05 (+18)
+produkcja: 80-05
+sale: produkcja + (1,15) years 81-20
+claim: sale + (1,364) days 81-21
+
+albo jeszcze prościej
+urodzenie: 50-80
+license: 81-90
+produkcja: 81-90
+sale: 91-05
+claim: 92-06, sale + (1,364) days

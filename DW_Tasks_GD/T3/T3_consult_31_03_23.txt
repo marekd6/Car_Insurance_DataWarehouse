@@ -1,0 +1,13 @@
+== Usunąć ceny części z Cars
+1 SCD - któryś Age (Client)
+1 calculated measure - SUM(Engine)/SUM(Indemnity) czy Engine/Indemnity?; może być też AVG_Ind = SUM(Indemnity)/CNT(Claims)
+W Hurtowni przechowujemy wynik ETL i queries, tylko niezbędne elementy, a nie wszystkie ze źródeł
+?? Czy zatem potrzebujemy (nie występują w pytaniach) Car: Age, Engine_capacity?
+?? Podobnie z Mileage, Garage, Account_nb, etc.
+
+
+T3
+SCD typu 2 Client, account, Age, także Car Age i ceny części Engine value: na jednej tabeli wystarczy 
+Calculated measure: suma odszkodowań - suma cen (ale to jest w wymiarze); albo udział poszczególnych kosztów w indemnity; SUM(Engine)/SUM(Indemnity); pytanie 2.4, 2.5; dowolna operacja
+Usunąć z Cars ceny 
+W Hurtowni przechowujemy wynik ETL i queries, tylko niezbędne elementy, a nie wszystkie ze źródeł 

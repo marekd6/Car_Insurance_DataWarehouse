@@ -1,0 +1,9 @@
+use SureSale
+GO
+
+DROP TABLE Claims
+DROP TABLE Insurances
+DROP TABLE Clients
+DROP TABLE Cars
+DROP TABLE Parts
+DROP TABLE Car_Types

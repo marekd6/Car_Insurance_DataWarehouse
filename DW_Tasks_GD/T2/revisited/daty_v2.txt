@@ -1,0 +1,13 @@
+birth
+license - birth
+
+age - birth
+exp - license
+assessment - evaluation
+submission
+
+birth < license =< sub =< eval
+Client		Claim
+1963-93	1993+	1993+
+
+zignorowany sens: production_year, 

@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "Car_Insurance2", "Car_Insurance2.dwproj", "{6EBF11D4-3A86-4CEB-AB90-B6F80743CEEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EBF11D4-3A86-4CEB-AB90-B6F80743CEEE}.Development|Default.ActiveCfg = Development
+		{6EBF11D4-3A86-4CEB-AB90-B6F80743CEEE}.Development|Default.Build.0 = Development
+		{6EBF11D4-3A86-4CEB-AB90-B6F80743CEEE}.Development|Default.Deploy.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99691AB4-F195-450E-959C-FD1EC6B0DCAC}
+	EndGlobalSection
+EndGlobal
